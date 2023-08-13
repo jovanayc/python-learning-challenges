@@ -1,0 +1,30 @@
+#Project 1 - Jovanay Carter - Codecademy Python 3 Course "Gradebook" Project
+#Aug 12, 2023
+last_semester_gradebook = [["politics", 80], ["latin", 96], ["dance", 97], ["architecture", 65]]
+
+# Your code below: 
+
+#subjects and grades separately
+subjects = ["physics", "calculus", "poetry", "history"]
+grades = [98, 97, 85, 88]
+
+#setting up gradebook 2D list
+gradebook = [[subjects[0], grades[0]], [subjects[1], grades[1]], [subjects[2], grades[2]], [subjects[3], grades[3]]]
+gradebook.append(["computer science", 100])
+gradebook.append(["visual arts", 93])
+print("Gradebook: ", gradebook, '\n')
+
+#Modify gradebook with negative indicies
+gradebook[-1][-1] += 5
+#print("Gradebook with edits: ", gradebook)
+
+#Modify gradebook poetry grade with pass/fail instead of grade numerical value --> 1) find poetry index, 2) then remove the poetry value 3) append to be "Pass"
+x = subjects.index("poetry")
+print("x =", x) #index = 2
+gradebook[x].remove(85)
+gradebook[x].append("Pass")
+print("Gradebook with edits: ", gradebook, '\n')
+
+#add grades from last semester
+full_gradebook = last_semester_gradebook + gradebook
+print("Full Gradebook", full_gradebook)
