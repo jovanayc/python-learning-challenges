@@ -1,0 +1,111 @@
+#Jovanay Carter
+#Aug 14, 2023
+#Python Crash Course -- programming practice challenges
+    #Challenge 1: Write a program that generates a random number, and asks the user to guess the number; 
+    #If the user is too high or too low, tell them. Restart once the user guesses the correct number. 
+
+#Output: I'm thinking of a number! Try to guess the number I'm thinking of: 25
+#Too low! Guess again: 50
+#Too high! Guess again: 42
+#That's it! Would you like to play again? (yes/no) no
+#Thanks for playing!
+
+#Matthes, Eric. Python Crash Course, 3rd Edition (p. xxxiii). No Starch Press. Kindle Edition. 
+###############
+
+#Imports
+from random import randint
+
+#Global Variables
+num_range_min = 0
+num_range_max = 50
+
+def get_computer_num():
+    #gets random computer int between 0 and 50
+    print("\nCOMPUTER NUMBER FUNCTION")
+    computer_n = randint(num_range_min, num_range_max)
+    print(computer_n, type(computer_n)) #for developer to see & check
+    return computer_n
+
+def get_user_num():
+    print("\nUSER NUMBER FUNCTION")
+    user_n = input(f"I'm thinking of a number between 0 and 50 (integers only)! Try to guess the number I'm thinking of: ")
+    print(f"This was your input: {user_n}", type(user_n))
+    
+    #check if user number is within constrainst; if not, run function again; if so, return
+    if type(user_n) == float:
+        invalid_type_message = f"\nInvalid type entry.\nMake sure to enter an integer (while numbers including 0). Avoid using decimals or fractions."
+        print(invalid_type_message)
+        get_user_num()
+    
+    #set input to int because auto format is a string
+    user_n = int(user_n)
+    
+    if user_n < num_range_min or user_n > num_range_max:
+        invalid_range_message = f"\nInvalid range entry.\nMake sure to enter a number between {num_range_min} and {num_range_max}, inclusive of both ends."
+        print(invalid_range_message)
+        get_user_num()
+    else:
+        print (user_n, type(user_n))
+        return (user_n)
+    
+def compare_numbers(computer_n, user_n):
+    #compare computer and user numbers
+    print("\nCOMPARING NUMBERS FUNCTION")
+    print(f"##Computer n from in compare number def: {computer_n}")
+
+    #check if new user number is 
+
+    #check user number equal or unequal to computer number
+    if user_n != computer_n:
+        print(f"##User n from in compare number def: {user_n}")
+        if user_n > computer_n:
+            user_n = input(f"\n Too high! Guess again: ")
+            user_n = int(user_n)
+            compare_numbers(computer_n, user_n)
+        elif user_n < computer_n:
+            user_n = input(f"\n Too low! Guess again: ")
+            user_n = int(user_n)
+            compare_numbers(computer_n, user_n)
+    
+    if user_n == computer_n:
+        print("That's it! Would you like to play again? ")
+        restart = input("(Yes/No): ")
+        restart = str(restart)
+        print(f"What is restart value: ")
+        if restart == 'yes' or 'Yes':
+            print("\nRestarting game...\n")
+            main()
+        elif restart == 'no' or 'No':
+            print("\nSee you next time!\n")
+            return #ends program on user command
+        
+        ### Other checks needs:
+        #check type to be sure its an int
+        #set constraints between range amounts so user input says "number invalid" and restarts prompt
+            #whenever user input is beyond constraints
+        #Set constraint for integers only so user input says "not an integer" when a float or string is entered
+        
+
+def main(): 
+    print("\nMAIN FUNCTION")
+    x = get_computer_num()
+    print(f"did computer num return?: {x}")
+    y = get_user_num()
+    print(f"did user num return?: {y}")
+    compare_numbers(x,y)
+    
+    
+#Expected print order
+    #main -> comput -> user -> compare    
+#run main program to start program
+main()
+
+
+
+#### MAIN PROBLEMS: 
+#NOT DONE
+    #restart not returning value
+    #constraints on user input -- floats
+#DONE   
+    #constraints on user input -- beyond 0-50 range
