@@ -1,3 +1,21 @@
+"""
+Jovanay Carter 
+Leetcode - Daily Coding Problem
+Friday, Sept 1, 2023
+
+Create a class that takes an integer 'n' and outputs an array of the numbers of ccurances of '1'
+ in the bit representations of i for numbers 0 through n.
+ Example:
+    input: n = 5
+    output: [0,1,1,2,1]
+    explanation:
+        # 0 --> 000
+        # 1 --> 001
+        # 2 --> 010
+        # 3 --> 011
+        # 4 --> 100
+"""
+
 class Solution:
     def countBits (self, n:int) -> list[int]:
         #set variables
@@ -17,6 +35,6 @@ class Solution:
         return result_list
 
 solution_instance = Solution()
-n = 17
+n = 5
 example = solution_instance.countBits(n)
 print(example)
