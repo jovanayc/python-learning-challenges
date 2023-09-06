@@ -1,0 +1,32 @@
+class Solution:
+    def twoSum(self, nums: list[int], target: int) -> list[int]:
+        #define hashtable for seen variables
+        viewed = {}
+        sumArray = []
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if complement in viewed and viewed[complement] != i: #check if complement is already in viewed hashtable
+                sumArray.append([viewed[complement]])
+                sumArray.append(i)
+                print([viewed[complement], i])                
+                return sumArray
+            else:
+                viewed[nums[i]] = i #if not a match, add item to hashtable
+                print(viewed)
+        return sumArray
+
+
+#Test case 1 -- two numbers
+print("Instance 1")
+instance1 = Solution()
+instance1.twoSum([2,7,11,15], 9)
+
+#Test case 2 -- no solution
+print("Instance 2")
+instance2 = Solution()
+instance2.twoSum([3,2,4], 6)
+
+#Test case 3 -- same number
+print("Instance 3")
+instance3 = Solution()
+instance3.twoSum([3,3], 6)
