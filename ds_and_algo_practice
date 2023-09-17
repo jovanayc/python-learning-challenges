@@ -1,0 +1,37 @@
+#Defining a singly-linked node in python
+
+class Node:
+  def __init__(self, value, link_node=None):
+    self.value = value
+    self.link_node = link_node
+    
+  # Define your get_value and get_link_node methods below:
+  def set_link_node(self, link_node):
+    self.link_node = link_node
+    print(self.link_node)
+    return self.link_node
+
+  def get_value(self):
+    print(self.value)
+    return self.value
+
+  def get_link_node(self):
+    print(self.link_node)
+    return self.link_node
+
+#IMPLEMENT EXAMPLE
+book1 = Node("The Handmaid's Tail")
+book2 = Node("Where the Wild Things Are")
+book3 = Node("An American Marriage")
+
+book1.set_link_node(book2)
+book2.set_link_node(book3)
+book3.set_link_node(None)
+
+book1.get_value()
+book2.get_value()
+book3.get_value()
+
+book1.get_link_node()
+book2.get_link_node()
+book3.get_link_node()
