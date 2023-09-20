@@ -1,0 +1,74 @@
+## Create a linkedlist where we can access the middle pointer when needed to cut O(n) time in half when we need to find a variable 'k'
+
+class Node:
+  def __init__(self, data, next_node=None):
+    self.data = data
+    self.next_node = next_node
+
+  def get_next_node(self):
+    return self.next_node
+
+  def set_next_node(self, new_node):
+    self.next_node = new_node
+    
+class LinkedList:
+  def __init__(self):
+    self.head = None
+    self.tail = None
+    self.middle = None
+    self.middle_counter = 0
+
+  def add_node(self, new_data):
+    #create new node
+    new_node = Node(new_data)
+    #add head when first node is empty
+    if self.head is None:
+      self.head = new_node
+      self.tail = new_node
+      self.middle = new_node
+      self.middle_counter += 1 #increase middle counter after new node is attached
+    #if there's already some nodes in the LL, add a new link 
+    else:
+      self.tail.set_next_node(new_node) #links last node to new_node
+      self.tail = new_node #changes tail ptr to new_node
+      self.middle_counter += 1 #increase middle counter after new node is attached
+      #move the middle counter on every even movement
+      if self.middle_counter % 2 == 1: #default middle counter to be the lesser value when the count is even
+        self.middle = self.middle.get_next_node()
+
+  def print_middle(self):
+    print(self.middle.data)
+  
+  def print_tail(self):
+    print(self.tail.data)
+    
+  def print_list(self):
+    print_ptr = self.head
+    while print_ptr:
+      print(print_ptr.data) #print data in current node
+      print_ptr = print_ptr.get_next_node() #move temp ptr to next node
+    return
+
+##############
+
+#Create instance of a class in main()
+class main():
+  student_grades = LinkedList()
+
+  student_grades.add_node(["Alex", 68])
+  student_grades.add_node(["Blake", 93])
+  student_grades.add_node(["Christian", 102])
+  student_grades.add_node(["Daniel", 77])
+  student_grades.add_node(["Eva", 89])
+  student_grades.add_node(["Faith", 84])
+
+  student_grades.print_list()
+
+  print("\nTAIL")
+  student_grades.print_tail()
+  
+  print("\nMIDDLE")
+  student_grades.print_middle()
+
+#Run main
+main()
