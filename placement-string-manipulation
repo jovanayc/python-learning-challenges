@@ -1,0 +1,35 @@
+#Uchicago 2018-2019 placement exam --> 'Problem A Honour Thy (Apaxian) Parent'
+#String manipulation --> add strings to the end of a string
+
+def new_name(input):
+  #parse string by space
+  input_arr = input.split(' ')
+  first = input_arr[0]
+  last = input_arr[1]
+  result = '' # result variable is final name
+
+  if first[-2:] == 'ex':
+    result = first + last
+  elif first[-1] == 'e':
+    result = first + 'x' + last
+  elif (first[-1] == 'a') or (first[-1] == 'i') or (first[-1] == 'o') or (first[-1] == 'u'):
+    first = first[:-1] #reset 'first' to be the word without the last letter
+    result = first + 'ex' + last
+  else:
+    result = first + "ex" +last
+
+  
+  #return result
+  return result
+    
+
+#vowels
+print(new_name("tommya thompson"))
+#'ex'
+print(new_name("tommyex thompson"))
+#'e'
+print(new_name("tommye thompson"))
+# no constraint
+print(new_name("tommy thompson"))
+
+#should return tommyexthompson
